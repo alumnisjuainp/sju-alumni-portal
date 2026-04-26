@@ -7,7 +7,7 @@ import API_BASE_URL from '../config';
 import emailjs from '@emailjs/browser';
 
 // ── EmailJS Credentials for Event Registration ──
-const EMAILJS_SERVICE_ID = 'service_gyaan';
+const EMAILJS_SERVICE_ID = 'service_ainp';
 const EMAILJS_TEMPLATE_ID = 'template_dq9l2i9';
 const EMAILJS_PUBLIC_KEY = 'J8oqQo3hZ1yHTQ0rE';
 
@@ -549,7 +549,7 @@ const HistorySection = () => (
       <Box className="fade-in-up delay-1" style={{ color: THEME.colors.textMuted, fontSize: THEME.typography.sizes.xl, lineHeight: '2', textAlign: 'justify', position: 'relative' }}>
         <Icons.quote style={{ position: 'absolute', top: '-20px', left: '-40px', width: '80px', height: '80px', opacity: 0.1, color: THEME.colors.brandPrimary }} />
         <p style={{ marginBottom: '32px' }}>
-          St Joseph's University is a Jesuit university at the heart of Bengaluru, the silicon city of India. Established in 1882 by Paris Foreign Mission Fathers, the management of the college was handed over to the Jesuit order (Society of Jesus) in 1937. In 1986, St Joseph's College became the first affiliated college in Karnataka to offer postgraduate programmes. 
+          St Joseph's University is a Jesuit university at the heart of Bengaluru, the silicon city of India. Established in 1882 by Paris Foreign Mission Fathers, the management of the college was handed over to the Jesuit order (Society of Jesus) in 1937. In 1986, St Joseph's College became the first affiliated college in Karnataka to offer postgraduate programmes.
         </p>
         <p style={{ marginBottom: '32px' }}>
           It became the first college in Karnataka to get a Research Centre in 1988. Fast forward to February 2021, the St Joseph's University Bill was presented in the Karnataka Legislative Assembly. The college received its University status on 2 July 2022 and was <strong>inaugurated as India's first Public-Private-Partnership University</strong> by the Honourable President of India, Smt. Droupadi Murmu on 27 September 2022.
@@ -573,16 +573,16 @@ const UnifiedStatsSection = () => {
   };
 
   return (
-    <Section style={{ 
-      paddingTop: '100px', 
-      paddingBottom: '140px', 
+    <Section style={{
+      paddingTop: '100px',
+      paddingBottom: '140px',
       background: `linear-gradient(135deg, ${THEME.colors.brandPrimary} 0%, #1a365d 100%)`,
       position: 'relative',
       overflow: 'hidden'
     }} id="stats-section">
       <Box style={{ position: 'absolute', top: '-10%', left: '-5%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(40px)' }} />
       <Box style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(60px)' }} />
-      
+
       <Container maxWidth="1200px" style={{ position: 'relative', zIndex: 10 }}>
         <Box className="fade-in-up" style={{ marginBottom: '80px', textAlign: 'center' }}>
           <Text size="sm" weight="bold" transform="uppercase" tracking="0.2em" color="brandSecondary" style={{ marginBottom: '16px' }}>
@@ -602,14 +602,14 @@ const UnifiedStatsSection = () => {
                 key={idx} direction="column" align="center" justify="center"
                 className="fade-in-up interactive-card"
                 style={{
-                  animationDelay: `${(idx % 3) * 0.15}s`, 
+                  animationDelay: `${(idx % 3) * 0.15}s`,
                   padding: '56px 32px',
                   background: 'rgba(255, 255, 255, 0.03)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: THEME.radii.xl, 
-                  textAlign: 'center', 
+                  borderRadius: THEME.radii.xl,
+                  textAlign: 'center',
                   position: 'relative',
                   boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
                   transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
@@ -629,9 +629,9 @@ const UnifiedStatsSection = () => {
               >
                 <Box style={{
                   marginBottom: '24px',
-                  width: '80px', height: '80px', borderRadius: '50%', 
+                  width: '80px', height: '80px', borderRadius: '50%',
                   background: 'linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: THEME.colors.brandSecondary,
                   border: `1px solid rgba(212,175,55,0.3)`
                 }}>
@@ -754,7 +754,7 @@ const CampusCalendar = () => {
       <Container maxWidth="1100px">
         <SectionHeader overline="Schedules" title="University Academic Calendar" align="center" />
         <Flex style={{ background: THEME.colors.bgPage, boxShadow: THEME.shadows.xl, borderRadius: THEME.radii.xl, overflow: 'hidden', border: `1px solid ${THEME.colors.borderLight}` }} direction="row" align="stretch" className="fade-in-up calendar-container" wrap="wrap">
-          
+
           <Box className="calendar-left-pane" style={{ background: THEME.colors.brandPrimary, color: THEME.colors.textWhite, padding: '80px 48px', width: '40%', minWidth: '240px', display: 'flex', flexDirection: 'column' }}>
             <Text size="6xl" weight="bold" color="brandSecondary" style={{ marginBottom: '8px' }}>{selectedDay}</Text>
             <Text size="2xl" weight="medium" style={{ marginBottom: '48px', color: THEME.colors.textWhite }}>February 2026</Text>
@@ -773,7 +773,7 @@ const CampusCalendar = () => {
               )}
             </Box>
           </Box>
-          
+
           <Box className="calendar-right-pane" style={{ padding: '60px', width: '60%', minWidth: '240px', position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Flex justify="space-between" align="center" style={{ marginBottom: '40px' }}>
               <Icons.chevronLeft style={{ cursor: 'pointer', color: THEME.colors.textMuted, width: '24px', height: '24px' }} />
@@ -858,15 +858,15 @@ const ReviewsSection = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        
+
         const fetchedData = [];
-        
+
         data.forEach((alum) => {
           const reviewText = alum.reviews;
-          
+
           if (reviewText && typeof reviewText === 'string' && reviewText.trim() !== "") {
             const finalReview = reviewText.length > 250 ? reviewText.substring(0, 247) + "..." : reviewText;
-            
+
             fetchedData.push({
               id: alum._id || alum.registerNumber || Math.random().toString(),
               text: finalReview,
@@ -880,7 +880,7 @@ const ReviewsSection = () => {
         const displayReviews = fetchedData.slice(0, 6);
 
         if (isMounted) {
-          setReviews(displayReviews); 
+          setReviews(displayReviews);
           setLoading(false);
         }
       } catch (err) {
@@ -891,7 +891,7 @@ const ReviewsSection = () => {
         }
       }
     };
-    
+
     fetchVoices();
     return () => { isMounted = false; };
   }, []);
@@ -915,13 +915,13 @@ const ReviewsSection = () => {
   return (
     <Section bg="brandPrimary" id="alumni-voices">
       <Container>
-        <SectionHeader 
-          overline="Live Database Voices" 
-          title={<span style={{ color: THEME.colors.textWhite }}>Alumni Reflections</span>} 
-          subtitle={<span style={{ color: THEME.colors.borderMedium }}>Real-time unedited testimonials extracted dynamically from our verified alumni database pipeline.</span>} 
-          align="center" 
+        <SectionHeader
+          overline="Live Database Voices"
+          title={<span style={{ color: THEME.colors.textWhite }}>Alumni Reflections</span>}
+          subtitle={<span style={{ color: THEME.colors.borderMedium }}>Real-time unedited testimonials extracted dynamically from our verified alumni database pipeline.</span>}
+          align="center"
         />
-        
+
         {loading ? (
           <Grid columns="repeat(auto-fill, minmax(min(100%, 350px), 1fr))" gap="32px">
             {[1, 2, 3, 4, 5, 6].map(key => <SkeletonReview key={key} index={key} />)}
@@ -1076,7 +1076,7 @@ const AppUnifiedHomeInner = () => {
 
       {/* Dynamic Render Modals */}
       <Modal isOpen={!!modal} onClose={closeModal} title={modal?.type === 'ALUMNI' ? 'Distinguished Alumnus' : modal?.type === 'NEWS' ? 'University Bulletin' : modal?.type === 'EVENT' ? 'Event Registration Portal' : ''}>
-        
+
         {modal?.type === 'ALUMNI' && (
           <Flex wrap="wrap" gap="56px" align="flex-start">
             <Box style={{ flex: '1 1 300px', maxWidth: '350px', borderRadius: THEME.radii.lg, overflow: 'hidden', border: `1px solid ${THEME.colors.borderMedium}`, boxShadow: THEME.shadows.lg }}>
