@@ -17,7 +17,7 @@ const allowedOrigins = [
     'http://localhost:5173',
     'https://sju-alumni-portal.vercel.app',
     'https://sju-alumni-portal-git-main-gyaan-09s-projects.vercel.app', // Vercel preview branch
-    'https://sju-alumni-frontend.onrender.com', // Render frontend
+    'https://sju-alumni-frontend-mu8l.onrender.com', // Render frontend
     process.env.FRONTEND_URL, // Dynamic from env (set by render.yaml)
 ].filter(Boolean);
 
