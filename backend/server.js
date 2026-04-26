@@ -4,6 +4,20 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const alumniRoutes = require('./routes/alumniRoutes');
 
+// CRASH-PROOF BACKEND ARCHITECTURE
+process.on('uncaughtException', (err) => {
+    console.error('🔥 UNCAUGHT EXCEPTION! Shutting down gracefully...');
+    console.error(err.name, err.message, err.stack);
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (err) => {
+    console.error('🔥 UNHANDLED REJECTION! Shutting down gracefully...');
+    console.error(err.name, err.message, err.stack);
+    // In production, you might want to gracefully close the server before exiting.
+    // For now, we log the error to prevent silent failures.
+});
+
 // Load env variables
 dotenv.config();
 
@@ -47,6 +61,20 @@ app.use('/api/health', require('./routes/healthRoutes'));
 app.use('/api/alumni', alumniRoutes);
 app.use('/api/jobs', require('./routes/jobRoutes'));
 app.use('/api/send-email', require('./routes/emailRoutes'));
+
+// GLOBAL ERROR HANDLING MIDDLEWARE
+app.use((err, req, res, next) => {
+    console.error('🔥 BACKEND CRASH INTERCEPTED:', err.stack);
+    
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    
+    res.status(statusCode).json({
+        success: false,
+        message: message,
+        stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack
+    });
+});
 
 const PORT = process.env.PORT || 5000;
 

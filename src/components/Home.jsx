@@ -11,33 +11,7 @@ const EMAILJS_SERVICE_ID = 'service_ainp';
 const EMAILJS_TEMPLATE_ID = 'template_dq9l2i9';
 const EMAILJS_PUBLIC_KEY = 'J8oqQo3hZ1yHTQ0rE';
 
-// CRASH-PROOF ARCHITECTURE (GLOBAL ERROR BOUNDARY) //
 
-class GlobalErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasFault: false, faultInfo: null };
-  }
-  static getDerivedStateFromError() {
-    return { hasFault: true };
-  }
-  componentDidCatch(caughtError, faultInfo) {
-    console.error("🔥 UI THREAD CRASH INTERCEPTED:", caughtError, faultInfo);
-    this.setState({ faultInfo });
-  }
-  render() {
-    if (this.state.hasFault) {
-      return (
-        <div style={{ padding: '80px', textAlign: 'center', fontFamily: '"Lora", serif', color: '#0C2340', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F8FAFC' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '16px', color: '#EF4444' }}>System Exception Intercepted</h1>
-          <p style={{ fontSize: '1.2rem', maxWidth: '600px', lineHeight: '1.8' }}>A critical render fault occurred. The error boundary has isolated the component tree.</p>
-          <button onClick={() => window.location.reload()} style={{ marginTop: '32px', padding: '16px 32px', backgroundColor: '#0C2340', color: '#D4AF37', border: 'none', borderRadius: '999px', fontSize: '1rem', fontWeight: 'bold', cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Reboot Application</button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 // DESIGN SYSTEM & STRICT THEME ENGINE //
 

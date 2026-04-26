@@ -10,6 +10,7 @@ import Directory from './components/Directory';
 import Jobs from './components/Jobs';
 import Mentorship from './components/Mentorship';
 import AdminDashboard from './components/AdminDashboard';
+import ErrorBoundary from './components/ErrorBoundary';
 import API_BASE_URL from './config';
 
 // CONFIGURATION //
@@ -761,37 +762,39 @@ const MegaFooter = () => {
 // MAIN APPLICATION COMPONENT //
 function App() {
   return (
-    <Router>
-      <div style={styles.appWrapper}>
-        <ScrollToTop />
-        <Navbar />
-        <main style={styles.mainContent}>
-          <Routes>
-            {/* PUBLIC ROUTES */}
-            <Route path="/" element={<Home />} />
+    <ErrorBoundary>
+      <Router>
+        <div style={styles.appWrapper}>
+          <ScrollToTop />
+          <Navbar />
+          <main style={styles.mainContent}>
+            <Routes>
+              {/* PUBLIC ROUTES */}
+              <Route path="/" element={<Home />} />
 
-            {/* ROUTES WHERE FOOTER IS HIDDEN (Handled inside MegaFooter) */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+              {/* ROUTES WHERE FOOTER IS HIDDEN (Handled inside MegaFooter) */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
 
-            {/* PROTECTED ROUTES (Requires Login) */}
-            <Route path="/directory" element={<ProtectedRoute><Directory /></ProtectedRoute>} />
-            <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
-            <Route path="/mentorship" element={<ProtectedRoute><Mentorship /></ProtectedRoute>} />
+              {/* PROTECTED ROUTES (Requires Login) */}
+              <Route path="/directory" element={<ProtectedRoute><Directory /></ProtectedRoute>} />
+              <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
+              <Route path="/mentorship" element={<ProtectedRoute><Mentorship /></ProtectedRoute>} />
 
-            {/* ADMIN ROUTES (Requires Admin Role) */}
-            <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+              {/* ADMIN ROUTES (Requires Admin Role) */}
+              <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
 
-            {/* ERROR ROUTES */}
-            <Route path="/unauthorized" element={<Unauthorized />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
+              {/* ERROR ROUTES */}
+              <Route path="/unauthorized" element={<Unauthorized />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-        {/* GLOBAL ULTRA-ENHANCED FOOTER */}
-        <MegaFooter />
-      </div>
-    </Router>
+          {/* GLOBAL ULTRA-ENHANCED FOOTER */}
+          <MegaFooter />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
