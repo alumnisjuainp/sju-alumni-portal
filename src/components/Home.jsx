@@ -1,6 +1,7 @@
 // src/AppUnifiedHome.jsx
 import React, { useState, useEffect, useMemo, useCallback, Component } from 'react';
 import API_BASE_URL from '../config';
+import ErrorBoundary from './ErrorBoundary';
 
 // ENTERPRISE CONFIGURATION & SECURE GATEWAYS //
 
@@ -1135,9 +1136,9 @@ const AppUnifiedHomeInner = () => {
 
 // Application wrapped in Global Error Boundary ensures UI thread stability
 const AppUnifiedHome = () => (
-  <GlobalErrorBoundary>
+  <ErrorBoundary>
     <AppUnifiedHomeInner />
-  </GlobalErrorBoundary>
+  </ErrorBoundary>
 );
 
 export default AppUnifiedHome;
