@@ -8,8 +8,8 @@ import emailjs from '@emailjs/browser';
 
 // ── EmailJS Credentials for Event Registration ──
 const EMAILJS_SERVICE_ID = 'service_gyaan';
-const EMAILJS_TEMPLATE_ID = 'template_gujmkla';
-const EMAILJS_PUBLIC_KEY = 'MgWnLyUUS3faeP6W5';
+const EMAILJS_TEMPLATE_ID = 'template_dq9l2i9';
+const EMAILJS_PUBLIC_KEY = 'J8oqQo3hZ1yHTQ0rE';
 
 // CRASH-PROOF ARCHITECTURE (GLOBAL ERROR BOUNDARY) //
 
@@ -1032,11 +1032,12 @@ const AppUnifiedHomeInner = () => {
     const templateParams = {
       name_event: applicantName,
       email_event: applicantEmail,
-      recipient_email: applicantEmail, // Use this variable in your EmailJS dashboard 'To Email' field
+      email: applicantEmail, // Maps to {{email}} in Reply To
+      recipient_email: applicantEmail, // Maps to {{recipient_email}} in To Email
       event_name: eventDetails.title,
+      title: eventDetails.title, // Maps to {{title}} in Subject
       event_date: eventDetails.date,
       event_loc: eventDetails.loc,
-      // Dashboard Step: Change 'To Email' field to {{recipient_email}}
     };
 
     try {
