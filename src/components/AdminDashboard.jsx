@@ -8,9 +8,9 @@ import API_BASE_CONFIG from '../config';
 const API_BASE_URL = `${API_BASE_CONFIG}/api/alumni`;
 
 // EmailJS Credentials
-const EMAILJS_PUBLIC_KEY = 'MgWnLyUUS3faeP6W5';
-const EMAILJS_SERVICE_ID = 'service_gyaan';
-const EMAILJS_TEMPLATE_ID = 'template_1jmzaa9';
+const EMAILJS_PUBLIC_KEY = 'J8oqQo3hZ1yHTQ0rE';
+const EMAILJS_SERVICE_ID = 'service_ainp';
+const EMAILJS_TEMPLATE_ID = 'template_lik3hwo';
 
 // Initialize EmailJS
 emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -327,6 +327,7 @@ const AdminDashboard = () => {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
           to_name: user.fullName || user['Full Name'] || 'Alumni',
           to_email: user.email || user.Email || '',
+          name: 'SJU Admin',
           username: genUser,
           password: genPass,
           message: 'Your SJU Alumni Portal account has been approved and activated.',
@@ -356,6 +357,7 @@ const AdminDashboard = () => {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
           to_name: user.fullName || user['Full Name'] || 'Alumni',
           to_email: user.email || user.Email || '',
+          name: 'SJU Admin',
           message: 'Unfortunately, your registration application could not be verified at this time. Please contact the alumni office for clarification.',
           username: 'N/A', // Using N/A for rejected entries
           password: 'N/A',
