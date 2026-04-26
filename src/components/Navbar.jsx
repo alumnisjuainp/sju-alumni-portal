@@ -4,14 +4,14 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   // -- STATE MANAGEMENT --
   const [user, setUser] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
-  
+
   // Real-time Settings State
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [compactMode, setCompactMode] = useState(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
           setUser(JSON.parse(storedUser));
         } else {
           // Fallback for demonstration if no user is logged in
-          setUser(null); 
+          setUser(null);
         }
       } catch (e) {
         console.error("Auth Error", e);
@@ -47,17 +47,17 @@ const Navbar = () => {
       setIsMobile(window.innerWidth < 992);
       if (window.innerWidth >= 992) setMobileMenuOpen(false);
     };
-    
+
     window.addEventListener('scroll', onScroll);
     window.addEventListener('resize', onResize);
-    
+
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    
+
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
@@ -70,7 +70,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Directory', path: '/directory' },
     { name: 'Mentorship', path: '/mentorship' },
-    { name: 'Job', path: '/jobs' }
+    { name: 'Jobs', path: '/jobs' }
   ];
 
   const handleLogout = () => {
@@ -310,7 +310,7 @@ const Navbar = () => {
 
       <nav style={styles.nav}>
         <div style={styles.container}>
-          
+
           {/* BRANDING */}
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '18px', textDecoration: 'none' }} onClick={() => setMobileMenuOpen(false)}>
             <div style={styles.logoBox} className="logo-hover">S</div>
@@ -326,8 +326,8 @@ const Navbar = () => {
               <ul style={{ display: 'flex', gap: '20px', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none' }}>
                 {navItems.map((item) => (
                   <li key={item.name}>
-                    <Link 
-                      to={item.path} 
+                    <Link
+                      to={item.path}
                       className={`ultra-link ${location.pathname === item.path ? 'active' : ''}`}
                     >
                       {item.name}
@@ -339,8 +339,8 @@ const Navbar = () => {
               {/* AUTH & USER */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginLeft: '35px', paddingLeft: '35px', borderLeft: '1px solid rgba(255,255,255,0.2)' }}>
                 {user ? (
-                  <div 
-                    style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', position: 'relative' }} 
+                  <div
+                    style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer', position: 'relative' }}
                     ref={dropdownRef}
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                   >
@@ -351,14 +351,14 @@ const Navbar = () => {
                     <div style={{ width: '45px', height: '45px', backgroundColor: theme.accent, color: theme.bg, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontSize: '1.3rem', border: '2px solid rgba(255,255,255,0.3)' }}>
                       {(user.full_name || user.name || "U").charAt(0).toUpperCase()}
                     </div>
-                    
+
                     {/* DROPDOWN MENU */}
                     <div className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
                       <div style={{ padding: '20px 25px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0', fontFamily: "'Lora', serif" }}>
                         <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#94a3b8', marginBottom: '8px', letterSpacing: '1px' }}>SIGNED IN AS</div>
                         <div style={{ fontWeight: '700', color: '#003366', fontSize: '1.1rem' }}>{user.full_name || user.name}</div>
                       </div>
-                      
+
                       {user.role === 'admin' && (
                         <Link to="/admin" className="dropdown-item" style={{ color: '#003366', fontWeight: '700' }}>
                           <i className="bi bi-shield-lock-fill"></i> Admin Console
@@ -366,16 +366,16 @@ const Navbar = () => {
                       )}
 
                       {/* REAL-TIME SETTINGS BUTTON (Opens internal modal, avoids 404) */}
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); setSettingsOpen(true); setDropdownOpen(false); }} 
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setSettingsOpen(true); setDropdownOpen(false); }}
                         className="dropdown-item"
                         style={{ border: 'none' }}
                       >
                         <i className="bi bi-sliders"></i> Preferences
                       </button>
-                      
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); handleLogout(); }} 
+
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleLogout(); }}
                         className="dropdown-item"
                         style={{ color: '#ef4444', fontWeight: '700', justifyContent: 'center', background: '#fef2f2', borderTop: '1px solid #fee2e2', marginTop: '10px' }}
                       >
@@ -384,8 +384,8 @@ const Navbar = () => {
                     </div>
                   </div>
                 ) : (
-                  <Link 
-                    to="/login" 
+                  <Link
+                    to="/login"
                     style={{ background: 'transparent', color: '#ffffff', border: `2px solid ${theme.accent}`, padding: '10px 30px', borderRadius: '50px', fontWeight: '600', textDecoration: 'none', fontSize: '0.95rem', transition: 'all 0.3s ease', fontFamily: "'Lora', serif" }}
                     onMouseOver={(e) => { e.target.style.background = theme.accent; e.target.style.color = '#003366'; }}
                     onMouseOut={(e) => { e.target.style.background = 'transparent'; e.target.style.color = '#ffffff'; }}
@@ -398,7 +398,7 @@ const Navbar = () => {
           )}
 
           {/* MOBILE TOGGLE */}
-          <button 
+          <button
             style={{ display: isMobile ? 'block' : 'none', background: 'none', border: 'none', color: 'white', fontSize: '2rem', cursor: 'pointer' }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -410,7 +410,7 @@ const Navbar = () => {
       {/* MOBILE MENU OVERLAY */}
       {isMobile && mobileMenuOpen && (
         <div style={{ position: 'fixed', top: '75px', left: 0, width: '100vw', height: 'calc(100vh - 75px)', backgroundColor: 'rgba(0, 30, 60, 0.98)', backdropFilter: 'blur(15px)', zIndex: 1040, padding: '2rem', display: 'flex', flexDirection: 'column', animation: 'fadeIn 0.3s ease' }}>
-          
+
           {user && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '15px 20px', backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: '15px', marginBottom: '25px', border: `1px solid rgba(255,255,255,0.15)` }}>
               <div style={{ width: '50px', height: '50px', backgroundColor: theme.accent, color: theme.bg, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontSize: '1.5rem', flexShrink: 0 }}>
@@ -431,29 +431,29 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-             <li>
-                <button onClick={() => {setSettingsOpen(true); setMobileMenuOpen(false);}} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: '#FFF', fontSize: '1.2rem', fontWeight: '500', padding: '14px 20px', width: '100%', textAlign: 'left', borderRadius: '12px', display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                  Preferences
-                </button>
-             </li>
-             {user && user.role === 'admin' && (
-               <li>
-                 <Link to="/admin" style={{ color: '#60a5fa', textDecoration: 'none', fontSize: '1.2rem', fontWeight: '500', display: 'flex', padding: '14px 20px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px', border: '1px solid rgba(96, 165, 250, 0.3)' }} onClick={() => setMobileMenuOpen(false)}>
-                   Admin Console
-                 </Link>
-               </li>
-             )}
+            <li>
+              <button onClick={() => { setSettingsOpen(true); setMobileMenuOpen(false); }} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: '#FFF', fontSize: '1.2rem', fontWeight: '500', padding: '14px 20px', width: '100%', textAlign: 'left', borderRadius: '12px', display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                Preferences
+              </button>
+            </li>
+            {user && user.role === 'admin' && (
+              <li>
+                <Link to="/admin" style={{ color: '#60a5fa', textDecoration: 'none', fontSize: '1.2rem', fontWeight: '500', display: 'flex', padding: '14px 20px', background: 'rgba(96, 165, 250, 0.1)', borderRadius: '12px', border: '1px solid rgba(96, 165, 250, 0.3)' }} onClick={() => setMobileMenuOpen(false)}>
+                  Admin Console
+                </Link>
+              </li>
+            )}
           </ul>
 
           <div style={{ marginTop: '20px', paddingBottom: '20px' }}>
             {user ? (
-               <button onClick={() => { setMobileMenuOpen(false); handleLogout(); }} style={{ background: '#ef4444', color: 'white', border: 'none', fontSize: '1.2rem', fontWeight: '600', padding: '15px 0', width: '100%', textAlign: 'center', borderRadius: '50px', cursor: 'pointer', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.4)' }}>
-                 Sign Out
-               </button>
+              <button onClick={() => { setMobileMenuOpen(false); handleLogout(); }} style={{ background: '#ef4444', color: 'white', border: 'none', fontSize: '1.2rem', fontWeight: '600', padding: '15px 0', width: '100%', textAlign: 'center', borderRadius: '50px', cursor: 'pointer', boxShadow: '0 4px 15px rgba(239, 68, 68, 0.4)' }}>
+                Sign Out
+              </button>
             ) : (
-               <Link to="/login" style={{ color: '#003366', backgroundColor: theme.accent, textDecoration: 'none', fontSize: '1.2rem', fontWeight: '700', display: 'block', padding: '15px 0', textAlign: 'center', borderRadius: '50px', boxShadow: `0 4px 15px ${theme.accent}66` }} onClick={() => setMobileMenuOpen(false)}>
-                 Login / Join
-               </Link>
+              <Link to="/login" style={{ color: '#003366', backgroundColor: theme.accent, textDecoration: 'none', fontSize: '1.2rem', fontWeight: '700', display: 'block', padding: '15px 0', textAlign: 'center', borderRadius: '50px', boxShadow: `0 4px 15px ${theme.accent}66` }} onClick={() => setMobileMenuOpen(false)}>
+                Login / Join
+              </Link>
             )}
           </div>
         </div>
@@ -467,7 +467,7 @@ const Navbar = () => {
               <h3 style={{ margin: 0, color: '#003366', fontWeight: '700' }}>UI Preferences</h3>
               <button onClick={() => setSettingsOpen(false)} style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: '#94a3b8' }}>&times;</button>
             </div>
-            
+
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <div>
                 <div style={{ fontWeight: '600', color: '#334155', fontSize: '1.1rem' }}>Compact Navigation</div>
@@ -483,8 +483,8 @@ const Navbar = () => {
               </div>
               <input type="checkbox" className="toggle-switch" checked={highContrast} onChange={() => setHighContrast(!highContrast)} />
             </div>
-            
-            <button 
+
+            <button
               onClick={() => setSettingsOpen(false)}
               style={{ width: '100%', padding: '12px', background: '#003366', color: 'white', border: 'none', borderRadius: '8px', fontWeight: '600', fontSize: '1rem', cursor: 'pointer', marginTop: '10px' }}
             >
